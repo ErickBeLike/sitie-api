@@ -12,7 +12,7 @@ public class Servicio {
     @Column(name = "nombre_servicio")
     private String nombre_servicio;
     @Column(name = "precio_servicio")
-    private Float precio;
+    private Integer precio_servicio;
     @Column(name = "descricion")
     private String descricion;
 
@@ -32,12 +32,12 @@ public class Servicio {
         this.nombre_servicio = nombre_servicio;
     }
 
-    public Float getPrecio() {
-        return precio;
+    public Integer getPrecio_servicio() {
+        return precio_servicio;
     }
 
-    public void setPrecio(Float precio) {
-        this.precio = precio;
+    public void setPrecio_servicio(Integer precio_servicio) {
+        this.precio_servicio = precio_servicio;
     }
 
     public String getDescricion() {

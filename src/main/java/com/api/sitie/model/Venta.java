@@ -18,11 +18,12 @@ public class Venta {
     @JoinColumn(name = "id_servicio")
     private Servicio id_servicio;
     @ManyToOne
-    @JoinColumn(name = "id_responsable")
-    private Empleado id_responsable;
+    @JoinColumn(name = "id_empleado")
+    private Empleado id_empleado;
     @Column(name = "fecha_venta")
     private LocalDateTime fecha_venta;
-    private float precio;
+    @Column(name = "precio_servicio")
+    private Integer precio_servicio;
 
     public Long getId() {
         return id;
@@ -48,12 +49,12 @@ public class Venta {
         this.id_servicio = id_servicio;
     }
 
-    public Empleado getId_responsable() {
-        return id_responsable;
+    public Empleado getId_empleado() {
+        return id_empleado;
     }
 
-    public void setId_responsable(Empleado id_responsable) {
-        this.id_responsable = id_responsable;
+    public void setId_empleado(Empleado id_empleado) {
+        this.id_empleado = id_empleado;
     }
 
     public LocalDateTime getFecha_venta() {
@@ -64,11 +65,11 @@ public class Venta {
         this.fecha_venta = fecha_venta;
     }
 
-    public float getPrecio() {
-        return precio;
+    public Integer getPrecio_servicio() {
+        return precio_servicio;
     }
 
-    public void setPrecio(float precio) {
-        this.precio = precio;
+    public void setPrecio_servicio(Integer precio_servicio) {
+        this.precio_servicio = precio_servicio;
     }
 }

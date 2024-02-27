@@ -53,18 +53,17 @@ public class VentaController {
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un cliente para el id :: " + datosVenta.get("id_cliente")));
         Servicio servicio = servicioRepository.findById(datosVenta.get("id_servicio"))
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un servicio para el id :: " + datosVenta.get("id_servicio")));
-        Empleado responsable = empleadoRepository.findById(datosVenta.get("id_responsable"))
+        Empleado empleado = empleadoRepository.findById(datosVenta.get("id_responsable"))
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un empleado para el id :: " + datosVenta.get("id_responsable")));
 
         // Crear una nueva venta
         Venta nuevaVenta = new Venta();
         nuevaVenta.setId_cliente(cliente);
         nuevaVenta.setId_servicio(servicio);
-        nuevaVenta.setId_responsable(responsable);
+        nuevaVenta.setId_empleado(empleado);
         nuevaVenta.setFecha_venta(LocalDateTime.now());
-        nuevaVenta.setPrecio(servicio.getPrecio());
+        nuevaVenta.setPrecio_servicio(servicio.getPrecio_servicio());
 
-        // Guardar la venta
         return ventaRepository.save(nuevaVenta);
     }
 
@@ -79,15 +78,15 @@ public class VentaController {
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un cliente para el id :: " + datosVenta.get("id_cliente")));
         Servicio servicio = servicioRepository.findById(datosVenta.get("id_servicio"))
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un servicio para el id :: " + datosVenta.get("id_servicio")));
-        Empleado responsable = empleadoRepository.findById(datosVenta.get("id_responsable"))
+        Empleado empleado = empleadoRepository.findById(datosVenta.get("id_responsable"))
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un empleado para el id :: " + datosVenta.get("id_responsable")));
 
         // Actualizar los campos de la venta según los datos proporcionados
         venta.setId_cliente(cliente);
         venta.setId_servicio(servicio);
-        venta.setId_responsable(responsable);
-        venta.setFecha_venta(LocalDateTime.now()); // Actualizar la fecha al momento de la modificación
-        venta.setPrecio(servicio.getPrecio());
+        venta.setId_empleado(empleado);
+        venta.setFecha_venta(LocalDateTime.now());
+        venta.setPrecio_servicio(servicio.getPrecio_servicio());
 
         // Guardar la venta actualizada
         final Venta ventaActualizada = ventaRepository.save(venta);
@@ -99,7 +98,6 @@ public class VentaController {
         Venta venta = ventaRepository.findById(idVenta)
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró una venta para el id :: " + idVenta));
 
-        // Elimina la venta
         ventaRepository.delete(venta);
         Map<String, Boolean> response = new HashMap<>();
         response.put("eliminado", Boolean.TRUE);

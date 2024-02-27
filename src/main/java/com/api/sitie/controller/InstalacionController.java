@@ -51,7 +51,7 @@ public class InstalacionController {
         // Crear una nueva instalación
         Instalacion nuevaInstalacion = new Instalacion();
         nuevaInstalacion.setId_venta(venta);
-        nuevaInstalacion.setId_responsable(empleado);
+        nuevaInstalacion.setId_empleado(empleado);
         nuevaInstalacion.setFecha_instalacion(datosInstalacion.get("fecha_instalacion").toString());
 
         // Guardar la instalación
@@ -73,7 +73,7 @@ public class InstalacionController {
 
         // Actualizar los campos de la instalación según los datos proporcionados
         instalacion.setId_venta(venta);
-        instalacion.setId_responsable(empleado);
+        instalacion.setId_empleado(empleado);
         instalacion.setFecha_instalacion(datosInstalacion.get("fecha_instalacion").toString());
 
         // Guardar la instalación actualizada

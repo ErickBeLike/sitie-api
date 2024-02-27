@@ -13,8 +13,8 @@ public class Instalacion {
     @JoinColumn(name = "id_venta")
     private Venta id_venta;
     @ManyToOne
-    @JoinColumn(name = "id_responsable")
-    private Empleado id_responsable;
+    @JoinColumn(name = "id_empleado")
+    private Empleado id_empleado;
     @Column(name = "fecha_instalacion")
     private String fecha_instalacion;
 
@@ -34,12 +34,12 @@ public class Instalacion {
         this.id_venta = id_venta;
     }
 
-    public Empleado getId_responsable() {
-        return id_responsable;
+    public Empleado getId_empleado() {
+        return id_empleado;
     }
 
-    public void setId_responsable(Empleado id_responsable) {
-        this.id_responsable = id_responsable;
+    public void setId_empleado(Empleado id_empleado) {
+        this.id_empleado = id_empleado;
     }
 
     public String getFecha_instalacion() {

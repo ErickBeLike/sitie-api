@@ -42,7 +42,7 @@ public class ServicioController {
         Servicio servicio = servicioRepository.findById(idServicio)
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un servicio para el id :: " + idServicio));
         servicio.setNombre_servicio(datosServicio.getNombre_servicio());
-        servicio.setPrecio(datosServicio.getPrecio());
+        servicio.setPrecio_servicio(datosServicio.getPrecio_servicio());
         servicio.setDescricion(datosServicio.getDescricion());
 
         final Servicio servicioActualizado = servicioRepository.save(servicio);
